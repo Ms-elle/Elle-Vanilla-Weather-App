@@ -11,11 +11,9 @@ if (minutes < 10) {
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let day = days[date.getDay()];
 return `${day} ${hours} ${minutes}`;
-
 }
 
 function displayTemperature(response) {
-    console.log(response.data);
     let temperatureElement = document.querySelector("#temperature");
     temperatureElement.innerHTML = Math.round
     (response.data.main.temp);
@@ -29,11 +27,15 @@ let humidityElement = document.querySelector("#humidity");
     windElement.innerHTML = Math.round(response.data.wind.speed);
      let dateElement = document.querySelector("#date");
     dateElement.innerHTML = formatDate(response.data.dt * 1000);
+       let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute("src", 
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 
 let apiKey = "d56bb5a206f2cbf907ca9677eab33e96";
+let city = "Melbourne";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?
-q=New York&appid=${apiKey}&units=metric`;
+q=${city}&appid=${apiKey}&units=metric`;
 
 
 axios.get(apiUrl).then(displayTemperature);
