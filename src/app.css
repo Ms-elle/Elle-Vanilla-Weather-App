@@ -63,3 +63,13 @@ li {
 li:first-letter {
   text-transform: capitalize;
 }
+
+.weather-temperature .active {
+  color: rgb(226, 43, 98);
+  cursor: default;
+  text-decoration: none;
+}
+
+.weather-temperature .active:hover {
+  text-decoration: none;
+}
